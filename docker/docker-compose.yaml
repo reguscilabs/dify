@@ -896,7 +896,7 @@ services:
       [
         "sh",
         "-c",
-        "cp /docker-entrypoint-mount.sh /docker-entrypoint.sh && sed -i 's/\r$$//' /docker-entrypoint.sh && chmod +x /docker-entrypoint.sh && /docker-entrypoint.sh",
+        "rm -rf /docker-entrypoint.sh && cp /docker-entrypoint-mount.sh /docker-entrypoint.sh && sed -i 's/\r$$//' /docker-entrypoint.sh && chmod +x /docker-entrypoint.sh && /docker-entrypoint.sh",
       ]
     environment:
       NGINX_SERVER_NAME: ${NGINX_SERVER_NAME:-_}
