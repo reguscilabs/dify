@@ -786,6 +786,7 @@ services:
       PIP_MIRROR_URL: ${PIP_MIRROR_URL:-}
     volumes:
       - ./volumes/sandbox/dependencies:/dependencies
+      - ./volumes/sandbox/conf:/conf
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8194/health"]
     networks:
@@ -859,6 +860,12 @@ services:
     volumes:
       - ./ssrf_proxy/squid.conf.template:/etc/squid/squid.conf.template
       - ./ssrf_proxy/docker-entrypoint.sh:/docker-entrypoint-mount.sh
+    entrypoint:
+      [
+        "sh",
+        "-c",
+        "cp /docker-entrypoint-mount.sh /docker-entrypoint.sh && sed -i 's/\r$$//' /docker-entrypoint.sh && chmod +x /docker-entrypoint.sh && /docker-entrypoint.sh",
+      ]
     environment:
       # pls clearly modify the squid env vars to fit your network environment.
       HTTP_PORT: ${SSRF_HTTP_PORT:-3128}
@@ -885,6 +892,12 @@ services:
       - ./volumes/certbot/conf/live:/etc/letsencrypt/live # cert dir (with certbot container)
       - ./volumes/certbot/conf:/etc/letsencrypt
       - ./volumes/certbot/www:/var/www/html
+    entrypoint:
+      [
+        "sh",
+        "-c",
+        "cp /docker-entrypoint-mount.sh /docker-entrypoint.sh && sed -i 's/\r$$//' /docker-entrypoint.sh && chmod +x /docker-entrypoint.sh && /docker-entrypoint.sh",
+      ]
     environment:
       NGINX_SERVER_NAME: ${NGINX_SERVER_NAME:-_}
       NGINX_HTTPS_ENABLED: ${NGINX_HTTPS_ENABLED:-false}
