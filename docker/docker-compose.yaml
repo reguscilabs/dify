@@ -905,6 +905,9 @@ services:
     depends_on:
       - api
       - web
+    networks:
+      - default
+      - dokploy_default
 
   # The Weaviate vector store.
   weaviate:
@@ -1349,6 +1352,8 @@ networks:
   opensearch-net:
     driver: bridge
     internal: true
+  dokploy_default:
+    external: true
 
 volumes:
   oradata:
