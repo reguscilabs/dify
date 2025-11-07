@@ -692,8 +692,8 @@ services:
     restart: always
     environment:
       CONSOLE_API_URL: ${CONSOLE_API_URL:-}
-      APP_API_URL: ${APP_API_URL:-}
-      CONSOLE_WEB_URL: ${CONSOLE_WEB_URL:-}
+      APP_API_URL: http://api:5001
+      CONSOLE_WEB_URL: http://api:5001
       SERVICE_API_URL: ${SERVICE_API_URL:-}
       APP_WEB_URL: ${APP_WEB_URL:-}
       NEXT_PUBLIC_COOKIE_DOMAIN: ${NEXT_PUBLIC_COOKIE_DOMAIN:-}
