@@ -696,12 +696,6 @@ services:
   web:
     image: langgenius/dify-web:1.9.2
     restart: always
-    healthcheck:
-      test: ["CMD", "wget", "--spider", "http://localhost:3000"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-      start_period: 10s
     environment:
       # API URLs must be internal, hardcoded
       CONSOLE_API_URL: http://api:5001
@@ -945,8 +939,6 @@ services:
       CERTBOT_DOMAIN: ${CERTBOT_DOMAIN:-}
     depends_on:
       api:
-        condition: service_healthy
-      web:
         condition: service_healthy
     networks:
       - default
