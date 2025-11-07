@@ -928,7 +928,7 @@ services:
       - web
     networks:
       - default
-      - dokploy_proxy
+      - dokploy-network
 
   # The Weaviate vector store.
   weaviate:
@@ -1373,7 +1373,7 @@ networks:
   opensearch-net:
     driver: bridge
     internal: true
-  dokploy_proxy:
+  dokploy-network:
     external: true
 
 volumes:
