@@ -697,12 +697,9 @@ services:
     image: langgenius/dify-web:1.9.2
     restart: always
     environment:
-      # API URLs must be internal, hardcoded
-      CONSOLE_API_URL: http://api:5001
-      APP_API_URL: http://api:5001
-      SERVICE_API_URL: http://api:5001
-      
-      # Web URLs must be public, from Dokploy UI
+      CONSOLE_API_URL: ${CONSOLE_API_URL:-}
+      APP_API_URL: ${APP_API_URL:-}
+      SERVICE_API_URL: ${SERVICE_API_URL:-}
       CONSOLE_WEB_URL: ${CONSOLE_WEB_URL:-}
       APP_WEB_URL: ${APP_WEB_URL:-}
       
