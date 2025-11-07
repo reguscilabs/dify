@@ -634,8 +634,6 @@ services:
       timeout: 10s
       retries: 3
       start_period: 30s
-    ports:
-      - "5001:5001"
     depends_on:
       db:
         condition: service_healthy
@@ -729,8 +727,6 @@ services:
       ENABLE_WEBSITE_FIRECRAWL: ${ENABLE_WEBSITE_FIRECRAWL:-true}
       ENABLE_WEBSITE_WATERCRAWL: ${ENABLE_WEBSITE_WATERCRAWL:-true}
       NEXT_PUBLIC_ENABLE_SINGLE_DOLLAR_LATEX: ${NEXT_PUBLIC_ENABLE_SINGLE_DOLLAR_LATEX:-false}
-    ports:
-     - "3000:3000"
     depends_on:
       api:
         condition: service_healthy
