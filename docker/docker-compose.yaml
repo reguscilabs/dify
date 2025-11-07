@@ -888,7 +888,6 @@ services:
       
       # The rest of the volumes:
       - ./nginx/httpsfs.conf.template:/etc/nginx/https.conf.template
-      - ./nginx/conf.d:/etc/nginx/conf.d
       - ./nginx/ssl:/etc/ssl # cert dir (legacy)
       - ./volumes/certbot/conf/live:/etc/letsencrypt/live # cert dir (with certbot container)
       - ./volumes/certbot/conf:/etc/letsencrypt
