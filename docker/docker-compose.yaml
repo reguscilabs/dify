@@ -697,6 +697,7 @@ services:
     image: langgenius/dify-web:1.9.2
     restart: always
     environment:
+      PORT: 3001
       CONSOLE_API_URL: http://api:5001
       APP_API_URL: http://api:5001
       SERVICE_API_URL: http://api:5001

@@ -27,6 +27,6 @@
 
     # All other requests go to the web app
     handle {
-        reverse_proxy http://web:3000
+        reverse_proxy http://web:3001
     }
 }
