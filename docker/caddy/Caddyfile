@@ -1,0 +1,27 @@
+{
+	email your-email@example.com
+}
+
+dify.infra.liffaclub.com {
+	# Proxy all API requests
+	handle_path /v1/* {
+		reverse_proxy http://api:5001
+	}
+	handle_path /api/* {
+		reverse_proxy http://api:5001
+	}
+	handle_path /console/api/* {
+		reverse_proxy http://api:5001
+	}
+	handle_path /files/* {
+		reverse_proxy http://api:5001
+	}
+	handle_path /mcp/* {
+		reverse_proxy http://api:5001
+	}
+
+	# Proxy the web app
+	handle {
+		reverse_proxy http://web:3000
+	}
+}
