@@ -697,7 +697,7 @@ services:
     image: langgenius/dify-web:1.9.2
     restart: always
     healthcheck:
-      test: ["CMD", "wget", "-qO-", "http://localhost:3000"]
+      test: ["CMD", "wget", "--spider", "http://localhost:3000"]
       interval: 30s
       timeout: 10s
       retries: 3
