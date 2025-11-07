@@ -1,27 +1,32 @@
-{
-	email your-email@example.com
-}
+:80 {
+    # API routes: match prefix, strip prefix, proxy to API
+    route /v1/* {
+        uri strip_prefix /v1
+        reverse_proxy http://api:5001
+    }
 
-dify.infra.liffaclub.com {
-	# Proxy all API requests
-	handle_path /v1/* {
-		reverse_proxy http://api:5001
-	}
-	handle_path /api/* {
-		reverse_proxy http://api:5001
-	}
-	handle_path /console/api/* {
-		reverse_proxy http://api:5001
-	}
-	handle_path /files/* {
-		reverse_proxy http://api:5001
-	}
-	handle_path /mcp/* {
-		reverse_proxy http://api:5001
-	}
+    route /api/* {
+        uri strip_prefix /api
+        reverse_proxy http://api:5001
+    }
 
-	# Proxy the web app
-	handle {
-		reverse_proxy http://web:3000
-	}
+    route /console/api/* {
+        uri strip_prefix /console/api
+        reverse_proxy http://api:5001
+    }
+
+    route /files/* {
+        uri strip_prefix /files
+        reverse_proxy http://api:5001
+    }
+
+    route /mcp/* {
+        uri strip_prefix /mcp
+        reverse_proxy http://api:5001
+    }
+
+    # All other requests go to the web app
+    handle {
+        reverse_proxy http://web:3000
+    }
 }
