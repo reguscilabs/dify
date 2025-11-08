@@ -705,8 +705,8 @@ services:
       SERVICE_API_URL: ${SERVICE_API_URL:-}
 
       # Web URLs MUST be public, from Dokploy UI
-      CONSOLE_WEB_URL: ${CONSOLE_WEB_URL:-}
-      APP_WEB_URL: ${APP_WEB_URL:-}
+      CONSOLE_WEB_URL: http://infra.liffaclub.com:3001
+      APP_WEB_URL: http://infra.liffaclub.com:3001
       
       # The rest of your variables
       NEXT_PUBLIC_COOKIE_DOMAIN: ${NEXT_PUBLIC_COOKIE_DOMAIN:-}
